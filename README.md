@@ -2,10 +2,7 @@
 
 This project aims to develop a simple, serverless Online Store with Google Sheet API.
 
-Disclaimer: The whole project is still work-in-progress. The payment gateway and logistics functions are not yet integrated. Also, the setup procedure has been tested on Mac OS only. Meanwhile, basic knowledge of bash command is required. If you still want to have a quick look at the project, please keep reading.
-
-For detail of the development progress, please check out the following Medium post :
-https://medium.com/@codeyourventurefree/build-an-online-store-for-free-with-google-sheet-part-1-wip-fcaa72834d22
+Disclaimer: Forked from [codeyourventurefree/google_sheet_shop](https://github.com/codeyourventurefree/google_sheet_shop)
 
 # Demo
 
@@ -16,10 +13,7 @@ Layout Setting : https://drive.google.com/open?id=1tQI0Z3_Tk1YtTrtBESHgf4lKgYxK
 Products : https://drive.google.com/open?id=1vcZ7BNqyAOA5AZWm7oyhMPy1Bh3pGP-atUfw13db3Yw
 
 # Installation
-
-You can watch this YouTube Video for the installation demo :
-
-[![Video](https://img.youtube.com/vi/1GfxFFv10iQ/0.jpg)](https://youtu.be/1GfxFFv10iQ)
+https://medium.com/@codeyourventurefree/build-an-online-store-for-free-with-google-sheet-part-1-wip-fcaa72834d22
 
 ## Step 1, register a Google and AWS account. 
 They are the prerequisite for the whole application. All we need are the 15GB storage on Google Drive and 5GB free tier from AWS S3.
@@ -48,8 +42,7 @@ Windows : https://www.youtube.com/watch?v=epH81xhS6mk
 Mac : https://www.youtube.com/watch?annotation_id=annotation_3330403137&feature=iv&src_vid=epH81xhS6mk&v=BIVfpvPnU0U
 
 ## Step 5, create an S3 bucket on Amazon. 
-Drag and drop all the files in the build directory to the bucket, copy and paste the permission setting. Enable static hosting and set the index document as index.html.
-
+Drag and drop all the files in the build directory to the bucket, copy and paste the permission setting. 
 Bucket Policy for the AWS S3:
 ```
 {
@@ -65,3 +58,4 @@ Bucket Policy for the AWS S3:
   ]
 }
 ```
+Enable static hosting and set the index document as index.html.
