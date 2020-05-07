@@ -9,7 +9,7 @@ export const request = (url, method, data, auth) => {
 		}
 	};
 	if(data !== null && data !== undefined){
-		options.body = data;		  
+		options.body = data;
 	};
 	if(auth){
 		options.headers['X-Postmark-Server-Token'] = auth;

@@ -1,9 +1,9 @@
 import { request } from '../../utils/fetch';
 import { googleParams } from '../../config/env';
-const { 
+const {
 	sheets_api,
-	api_key , 
-	layout_id 
+	api_key ,
+	layout_id
 } = googleParams;
 
 export function getLayout(){
@@ -41,7 +41,7 @@ export function getLayout(){
 						layout[key] = cellValue[1]['formattedValue'] : 
 						layout[key] = null;
 				});
-				dispatch({ 
+				dispatch({
 			 		type : 'SET_LAYOUT',
 					value : layout
 				});

@@ -27,10 +27,10 @@ class Item extends Component {
 	render(){
 		const { item , layout , amendCart } = this.props;
 		const { quantity ,status } = this.state;
-		const { 
-			name , 
-			price , 
-			thumbnail , 
+		const {
+			name ,
+			price ,
+			thumbnail ,
 			description,
 			images
 		} = item;
@@ -44,7 +44,7 @@ class Item extends Component {
 			<Grid.Column>
 				<Card
 					fluid={true}
-					image={thumbnail}	
+					image={thumbnail}
 					meta={`${currency} : $${price}`}
 					header={name}
 					description={(description !== undefined && description !== null) ? description : null}
@@ -52,9 +52,9 @@ class Item extends Component {
 						<Grid>
 							<Grid.Row columns={2}>
 							<Grid.Column className='ui three buttons' width={13} style={{ padding : '5px 10px' }}>
-								<Button 
-									basic 
-									color='green' 
+								<Button
+									basic
+									color='green'
 									onClick={()=>{
 										amendCart('add',item);
 										this.changeQuantity('add',quantity);
@@ -62,17 +62,17 @@ class Item extends Component {
 								>
 									<Icon name="plus"/>
 								</Button>
-								
-								<Button 
-									basic 
+
+								<Button
+									basic
 									color={'grey'}
 									disabled={true}
 								>
 									{quantity}
 								</Button>
-								<Button 
-									basic 
-									color='red' 
+								<Button
+									basic
+									color='red'
 									onClick={()=>{
 										amendCart('minus',item);
 										this.changeQuantity('minus',quantity);
@@ -82,15 +82,15 @@ class Item extends Component {
 								</Button>
 							</Grid.Column>
 							<Grid.Column width={2} style={{ padding : '5px 2px' }}>
-								<Modal trigger={<Button icon disabled={images.length === 0}><Icon name='search'/></Button>} 
-									style={{ 
-										minHeight : '100vh' , 
-										display : 'flex' , 
-										flex : 1 , 
-										alignItems : 'center', 
-										justifyContent : 'center',  
-										margin : 'auto' 
-									}} 
+								<Modal trigger={<Button icon disabled={images.length === 0}><Icon name='search'/></Button>}
+									style={{
+										minHeight : '100vh' ,
+										display : 'flex' ,
+										flex : 1 ,
+										alignItems : 'center',
+										justifyContent : 'center',
+										margin : 'auto'
+									}}
 									basic
 								>
 									<Modal.Content style={{ margin : 'auto'  }}>
@@ -99,7 +99,7 @@ class Item extends Component {
 										)}
 									</Modal.Content>
 								</Modal>
-							</Grid.Column>	
+							</Grid.Column>
 							</Grid.Row>
 						</Grid>
 					}
@@ -111,12 +111,12 @@ class Item extends Component {
 }
 
 function mapStateToProps(state){
-	return { 
+	return {
 	}
 };
 
 function mapDispatchToProps(dispatch) {
-	return bindActionCreators({ 
+	return bindActionCreators({
 		amendCart
 	}, dispatch)
 };

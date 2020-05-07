@@ -5,7 +5,7 @@ import { getProduct } from '../product/action.js';
 import { Grid, Image, Segment , Loader } from 'semantic-ui-react';
 import Item from './item';
 
-let styles = { 
+let styles = {
 	main : {
 		width : '95%',
 		backgroundColor : 'white',
@@ -38,9 +38,9 @@ class ProductGrid extends Component {
 		console.log(products);
 		return(
 			<div style={styles.main}>
-				<Grid 
-					stackable 
-					columns={(layout['itemPerRow'] !== undefined && layout['itemPereRow'] !== null) ? layout['itemPerRow'] : 3 } 
+				<Grid
+					stackable
+					columns={(layout['itemPerRow'] !== undefined && layout['itemPereRow'] !== null) ? layout['itemPerRow'] : 3 }
 					style={styles.wrapper}
 				>
 					{(products !== undefined) ? products.map((item,key)=><Item key={key} item={item} layout={layout}/>) : <Loader active/>}
@@ -49,15 +49,15 @@ class ProductGrid extends Component {
 		)
 	}
 }
-			
+
 function mapStateToProps(state){
-	return { 
+	return {
 		products : state.products.list
 	}
 };
 
 function mapDispatchToProps(dispatch) {
-	return bindActionCreators({ 
+	return bindActionCreators({
 		getProduct
 	}, dispatch)
 };

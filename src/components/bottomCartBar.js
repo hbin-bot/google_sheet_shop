@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Segment , Button , Icon , Header , Transition } from 'semantic-ui-react';
+import { Segment , Button , Icon , Header , Transition, Modal } from 'semantic-ui-react';
+import ContactForm from './contactForm';
 
 class BottomCartBar extends Component {
 	constructor(props){
 		super(props);
-		this.state = { status : true };
+		this.state = {
+			status : true,
+			disableButton : false
+		};
 	}
 	shouldComponentUpdate(nextProps,nextState){
 		const { cart , layout } = this.props;
@@ -47,6 +51,14 @@ class BottomCartBar extends Component {
 			quantity += item.quantity
 			price += item.quantity * item.price;
 		});
+
+		if (quantity > 0) {
+			this.state.disableButton = false
+		}
+		else {
+			this.state.disableButton = true
+		}
+
 		return { quantity : quantity , price : price } ;
 	}
 	render(){
@@ -54,14 +66,15 @@ class BottomCartBar extends Component {
 		const { status } = this.state;
 		const renderStyle = this.styleSetting(layout);
 		const total = this.cartCalculator(cart);
+
 		return (layout.currency !== undefined) ? (
-			<Segment 
+			<Segment
 				style={renderStyle.bar}
 				textAlign={'center'}
 			>
-				<Header 
-					as='h2' 
-					floated="left" 
+				<Header
+					as='h2'
+					floated="left"
 					textAlign="center"
 					style={{ margin : '5px'}}
 				>
@@ -70,26 +83,32 @@ class BottomCartBar extends Component {
 						{`$${total.price} ${layout.currency}`}
 					</Header.Content>
 				</Header>
-				<Transition animation={'shake'} duration={1000} visible={status}>
+				<Modal trigger={
 					<Button
-						icon 
+						icon
 						size={'big'}
 						labelPosition='right'
 						style={{ margin : '0px 10px'}}
 						floated='right'
 						color='green'
-					>
+						disabled={this.state.disableButton}
+						>
 						<Icon name='cart'/>
 						{`Checkout (${total.quantity})`}
-					</Button>	
-				</Transition>
+					</Button>
+				} closeIcon size={'large'} className='modalStyle'>
+					<Header content='Checkout' textAlign={'center'} as='h1' subheader = 'Please fill the following questions, and your order will be sent to us immediately. We will contact you to process the payment once we receive your order.'/>
+		      <Modal.Content>
+		      	<ContactForm orderData={cart}/>
+		      </Modal.Content>
+				</Modal>
 			</Segment>
 		) : null;
 	}
 }
 
 function mapStateToProps(state){
-	return { 
+	return {
 		cart : state.products.cart
 	}
 };
